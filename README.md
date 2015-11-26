@@ -5,16 +5,18 @@ webbuilder示例项目
 首次运行，需要修改config/dataSource/dataSource.properties里的jdbc配置。目前只支持mysql数据库
 
 
-#目录结构
------config
--------|------cache------------缓存配置
--------|--------|-----local----本地缓存支持
--------|--------|-----redis----redis缓存支持
--------|------custom------------自定义表支持，用于自动维护tables中以html定义的数据库表结构
--------|------dataSource--------数据源以及事务配置
--------|------mybatis-----------mybatis基础配置
--------|------spring------------spring主配置
--------|------web------------springMVC主配置
+#配置文件说明
+```bash
+├── cache                     # 缓存配置
+├
+├── custom                    # 自定义表支持，用于自动维护tables中以html定义的数据库表结构
+├── dataSource                # 数据源以及事务配置
+├
+├── mybatis                   # mybatis基础配置。
+├── spring                    # spring主配置
+├
+├── web                       # springMVC主配置
+```
 #webapp
 视图采用freemarker，对应文件地址:WEB-INF/ftl
 
