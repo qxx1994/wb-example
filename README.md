@@ -31,4 +31,5 @@ GET 对应查询 POST新增 PUT修改 DELETE删除
 
 具体功能请看:[wb-sql-util](https://github.com/wb-goup/webbuilder/blob/master/wb-sql-util)
 
-
+访问，由于暂时没有登陆页 只能通过: http://localhost:8080/wb/api/login?username=admin&password=admin 
+先登录，再访问index.html
