@@ -3,8 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>重庆市两江新区校园食品监管平台</title>
-    <meta name="description" content="重庆市两江新区校园食品监管平台">
+    <title>webbuilder</title>
+    <meta name="description" content="webbuilder">
     <meta name="keywords" content="index">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="renderer" content="webkit">
@@ -24,7 +24,7 @@
 
 <header class="am-topbar admin-header">
     <div class="am-topbar-brand">
-        <img id="title" src="resources/img/title.jpg" style="width: auto;height: 90%;">
+      <h1>webbuilder演示</h1>
     </div>
     <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only"
             data-am-collapse="{target: '#topbar-collapse'}"><span class="am-sr-only">导航切换</span> <span
@@ -101,7 +101,7 @@
     <div class="am-footer-switch">
     <div class="am-footer-miscs ">
         <p>CopyRight©2015</p>
-        <p>重庆市两江新区</p>
+        <p>webbuilder</p>
     </div>
 </footer>
 
