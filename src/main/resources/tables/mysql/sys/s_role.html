@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head lang="cn">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<table-meta name="s_role" remark="角色管理">
+    <attr system="true"/>
+</table-meta>
+<input field-meta name="u_id" remark="主键" primary-key="true" java-type="string" data-type="varchar(40)"/>
+<input field-meta name="name" remark="角色名称" not-null="true" java-type="string" data-type="varchar(256)"/>
+<input field-meta name="type" remark="角色类型" java-type="string" data-type="varchar(50)"/>
+<input field-meta name="remark" remark="备注" java-type="string" data-type="varchar(512)"/>
+</body>
+</html>
+<script trigger="init.data" type="text/java" language="groovy">
+    //在数据库被创建后，自定初始化数据
+    def data=[
+            [u_id:"admin",name:"超级管理员",type:"admin",remark:"初始数据"]
+            ];
+            return [data:data,success:true];
+</script>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head lang="cn">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<table-meta name="s_resources" read-only="true" remark="资源">
+    <attr system="true"/>
+</table-meta>
+<input field-meta name="u_id" remark="主键" primary-key="true" java-type="string" data-type="varchar(40)"/>
+<input field-meta name="name" remark="资源名称" not-null="true" java-type="string" data-type="varchar(256)"/>
+<input field-meta name="path" remark="资源地址" not-null="true"java-type="string" data-type="varchar(1024)"/>
+<input field-meta name="type" remark="脚本类型" not-null="true" java-type="string" data-type="varchar(256)"/>
+<input field-meta name="md5" remark="md5值" not-null="true" java-type="string" data-type="varchar(256)"/>
+<input field-meta name="status" remark="状态" java-type="int" data-type="int"/>
+<input field-meta name="create_date" remark="创建日期" not-null="true" java-type="date" data-type="datetime"/>
+<input field-meta name="creator_id" remark="创建人主键" not-null="true" java-type="string" data-type="varchar(256)"/>
+</body>
+</html>

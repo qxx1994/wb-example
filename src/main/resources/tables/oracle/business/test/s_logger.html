@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head lang="cn">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<correlation target="s_user">
+    <condition filed="user_id" value="s_user.u_id" sql="true"></condition>
+</correlation>
+<table-meta name="s_logger" remark="系统日志表"/>
+<input field-meta name="u_id" remark="主键" primary-key="true" java-type="string" data-type="varchar2(256)"/>
+<input field-meta name="client_ip" remark="请求者ip" java-type="string" data-type="varchar2(256)"/>
+<input field-meta name="request_uri" remark="uri" not-null="true" java-type="string" data-type="varchar2(1024)"/>
+<input field-meta name="request_url" remark="url" not-null="true" java-type="string" data-type="varchar2(2048)"/>
+<input field-meta name="request_method" remark="请求方法" not-null="true" java-type="string" data-type="varchar2(512)"/>
+<input field-meta name="response_content" remark="响应结果" not-null="true" java-type="string" data-type="clob"/>
+<input field-meta name="user_id" remark="操作用户主键" not-null="true" java-type="string" data-type="varchar2(64)"/>
+<input field-meta name="request_time" remark="请求时间"  java-type="date" data-type="date"/>
+<input field-meta name="response_time" remark="响应时间" java-type="date" data-type="date"/>
+<input field-meta name="user_agent" remark="客户端标识" java-type="string" data-type="clob"/>
+<input field-meta name="referer" remark="referer" not-null="true" java-type="string" data-type="varchar2(64)"/>
+<input field-meta name="response_code" remark="响应码" java-type="string" data-type="clob"/>
+<input field-meta name="request_header" remark="请求头" java-type="string" data-type="clob"/>
+<input field-meta name="class_name" remark="类名" java-type="string" data-type="varchar2(512)"/>
+<input field-meta name="module_desc" remark="功能摘要" java-type="string" data-type="varchar2(256)"/>
+<input field-meta name="request_param" remark="请求参数" java-type="string" data-type="clob"/>
+<input field-meta name="exception_info" remark="异常" java-type="string" data-type="clob"/>
+<input field-meta name="cache_key" remark="命中缓存" java-type="string" data-type="clob"/>
+<input field-meta name="server_ip" remark="服务器ip" java-type="string" data-type="varchar2(64)"/>
+<input field-meta name="app_name" remark="应用名" java-type="string" data-type="varchar2(128)"/>
+<input field-meta name="use_time" remark="请求耗时" java-type="int" data-type="number(32)"/>
+</body>
+</html>
