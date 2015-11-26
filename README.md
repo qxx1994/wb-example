@@ -21,10 +21,10 @@ webbuilder示例项目
 视图采用freemarker，对应文件地址:WEB-INF/ftl
 
 #新建一个功能
-第一步、在tables/mysql/business 新建目录和文件，文件格式参照其他html文件。
-第二步、重启服务或者调用链接 /api/initTable进行初始化表信息
-第三步、进入权限管理，添加权限，注意此权限的ID需要和表名相同
-第三步、分配权限给角色
+#####第一步、在tables/mysql/business 新建目录和文件，文件格式参照其他html文件。
+#####第二步、重启服务或者调用链接 /api/initTable进行初始化表信息
+#####第三步、进入权限管理，添加权限，注意此权限的ID需要和表名相同
+#####第三步、分配权限给角色
 #使用新建的功能
 使用restful，通过ajax调用链接: /api/cf/{tableName}进行对应的操作。
 GET 对应查询 POST新增 PUT修改 DELETE删除
