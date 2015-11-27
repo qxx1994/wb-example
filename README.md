@@ -1,6 +1,15 @@
 # wb-example
 webbuilder示例项目
 
+#安装，此项目依赖webbuilder项目，打包之前请确保webbuilder已安装
+
+```shell
+$ git clone https://github.com/zhou-hao/wb-example.git
+
+$ cd wb-example
+
+$ mvn package
+```
 #配置
 首次运行，需要修改config/dataSource/dataSource.properties里的jdbc配置。目前只支持mysql数据库
 
