@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:cache="http://www.springframework.org/schema/cache"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+         http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd">
+
+
+    <bean id="defaultCounter" class="org.webbuilder.utils.storage.counter.support.local.LocalCounter">
+        <property name="name" value="local"></property>
+    </bean>
+
+    <!--注册驱动-->
+    <bean id="localDriver" class="org.webbuilder.utils.storage.driver.local.LocalStorageDriver" init-method="init">
+        <property name="name" value="${storage.default.name}"/>
+    </bean>
+
+    <bean id="queueDriver" class="org.webbuilder.utils.storage.driver.local.LocalStorageDriver" init-method="init">
+        <property name="name" value="queueDriver"/>
+    </bean>
+
+    <bean id="httpSessionDriver" class="org.webbuilder.utils.storage.driver.local.LocalStorageDriver"
+          init-method="init">
+        <property name="name" value="http.session.local"/>
+    </bean>
+
+    <!--配置sessionManager，使用httpSessionRedisDriver作为session管理-->
+    <bean name="httpSessionManager" class="org.webbuilder.web.core.utils.http.session.impl.LocalHttpSessionManager">
+    </bean>
+
+    <!--对spring cache的支持-->
+    <bean id="cacheManager" class="org.webbuilder.web.core.cache.CacheManager">
+        <property name="driver" ref="localDriver"/>
+    </bean>
+
+    <!--缓存注解支持,在需要缓存的service方法中，注解 @Cacheable 或者@CacheEvict-->
+    <cache:annotation-driven cache-manager="cacheManager"/>
+
+</beans>

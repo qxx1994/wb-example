@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="
+    http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="oracleDataBaseMetaData" class="org.webbuilder.sql.support.OracleDataBaseMetaData"></bean>
+    <bean id="mysqlDataBaseMetaData" class="org.webbuilder.sql.support.MysqlDataBaseMetaData"></bean>
+
+    <bean id="sqlExecutorService" class="org.webbuilder.web.service.basic.SqlExecutorService"></bean>
+
+    <bean id="dataBase" class="org.webbuilder.sql.support.common.CommonDataBase">
+        <constructor-arg index="0" ref="mysqlDataBaseMetaData"></constructor-arg>
+        <constructor-arg index="1" ref="sqlExecutorService"></constructor-arg>
+    </bean>
+
+    <bean id="defaultTableFactory" class="org.webbuilder.web.service.form.DefaultTableFactory" init-method="init"
+          p:autoAlter="true" p:dataBase-ref="dataBase" p:localFiles="classpath:tables/${core.dialect}/business/**/*.html">
+    </bean>
+
+    <!--系统表，不进行自动维护-->
+    <bean id="sysTableFactory" class="org.webbuilder.web.service.form.DefaultTableFactory" init-method="init"
+          p:autoAlter="true" p:dataBase-ref="dataBase" p:localFiles="classpath:tables/${core.dialect}/sys/**/*.html">
+    </bean>
+</beans>
