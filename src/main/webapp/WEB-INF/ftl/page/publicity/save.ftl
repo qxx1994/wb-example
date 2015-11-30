@@ -85,15 +85,11 @@
         seajs.use(["request", "upload"], function (req, up) {
             request = req;
             uploader = new WebUploader.Uploader({
-                // swf文件路径
                 swf: ROOT_PATH + 'plugins/webuploader/Uploader.swf',
-                // 文件接收服务端。
                 server: getServicePath("/file/upload"),
-                // 选择文件的按钮。可选。
-                // 内部根据当前运行是创建，可能是input元素，也可能是flash.
                 pick: '#fileButton',
-                // 不压缩image, 默认如果是jpeg，文件上传前会压缩一把再上传！
-                resize: false
+                resize: false,
+                compress:false
             });
             initListener();
             $('.webuploader-element-invisible').hide();
