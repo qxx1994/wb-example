@@ -49,6 +49,7 @@
           p:dataSource-ref="dataSource"
           p:configLocation="classpath:config/mybatis/mybatis-config-core.xml"
           p:typeAliasesPackage="${core.typeAliasesPackage}">
+        <!--自动分页插件-->
         <property name="plugins">
             <list>
                 <bean class="org.webbuilder.web.core.dao.interceptor.PagerInterceptor">
@@ -56,6 +57,7 @@
                 </bean>
             </list>
         </property>
+        <!--扫描mybatis mapper配置-->
         <property name="mapperLocations">
             <array>
                 <value>classpath*:org/webbuilder/**/dao/**/mapper/${core.dialect}/*Mapper.xml</value>
@@ -65,7 +67,7 @@
 
     <!-- spring与mybatis整合配置，扫描所有dao -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer"
-          p:basePackage="org.webbuilder.**.dao;com.cqth.xysp.**.dao"
+          p:basePackage="org.webbuilder.**.dao"
           p:sqlSessionFactoryBeanName="sqlSessionFactory"/>
 
     <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
