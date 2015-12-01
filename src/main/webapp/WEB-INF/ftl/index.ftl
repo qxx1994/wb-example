@@ -39,7 +39,7 @@
 
             </li>
             <li class="am-dropdown" data-am-dropdown>
-                <a   href="javascript:;">
+                <a   href="javascript:out();">
                     <span class="am-icon-power-off"></span> 退出
                 </a>
             </li>
@@ -129,4 +129,13 @@
         goPage("page/index_page.html");
     }
 
+    function out(){
+        seajs.use(["request"],function(reqeust){
+            reqeust.post("login/exit",{},function(data){
+                if(data.success){
+                    window.location.href = "login.html";
+                }
+            });
+        })
+    }
 </script>

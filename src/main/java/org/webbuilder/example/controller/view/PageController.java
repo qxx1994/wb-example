@@ -1,4 +1,5 @@
 package org.webbuilder.example.controller.view;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -31,6 +32,9 @@ public class PageController {
         }
         if (path.contains("."))
             path = path.split("[.]")[0];
+        if (!path.equals("go_login")&&!path.equals("login") && WebUtil.getLoginUser(request) == null) {
+            path = "go_login";
+        }
         ModelAndView modelAndView = new ModelAndView(path);
         Map<String, Object> sessionAttr = new HashMap<>();
         Enumeration<String> enumeration = request.getSession().getAttributeNames();
@@ -41,7 +45,6 @@ public class PageController {
         modelAndView.addObject("param", WebUtil.getParams(request));
         modelAndView.addObject("basePath", WebUtil.getBasePath(request));
         modelAndView.addObject("config", configService);
-        User.createUID();
         return modelAndView;
     }
 

@@ -17,11 +17,13 @@
     </bean>
 
     <bean id="defaultTableFactory" class="org.webbuilder.web.service.form.DefaultTableFactory" init-method="init"
-          p:autoAlter="true" p:dataBase-ref="dataBase" p:localFiles="classpath:tables/${core.dialect}/business/**/*.html">
+          p:autoAlter="true" p:bakPath="/webbuiler/table/mysql" p:dataBase-ref="dataBase"
+          p:localFiles="classpath:tables/${core.dialect}/business/**/*.html">
     </bean>
 
     <!--系统表，不进行自动维护-->
     <bean id="sysTableFactory" class="org.webbuilder.web.service.form.DefaultTableFactory" init-method="init"
-          p:autoAlter="true" p:dataBase-ref="dataBase" p:localFiles="classpath:tables/${core.dialect}/sys/**/*.html">
+          p:autoAlter="true" p:bakPath="/webbuiler/table/mysql" p:dataBase-ref="dataBase"
+          p:localFiles="classpath:tables/${core.dialect}/sys/**/*.html">
     </bean>
 </beans>

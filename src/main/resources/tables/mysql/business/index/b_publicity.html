@@ -5,10 +5,10 @@
     <title></title>
 </head>
 <input>
-<correlation target="s_user">
+<correlation target="s_user" alias="creator">
     <condition filed="creator_id" value="s_user.u_id" sql="true"></condition>
 </correlation>
-<correlation target="b_publicity_reader">
+<correlation target="b_publicity_reader" alias="publicity">
     <condition filed="u_id" value="b_publicity_reader.publicity_id" sql="true"></condition>
 </correlation>
 <table-meta name="b_publicity" remark="公告"/>

@@ -13,9 +13,9 @@ import javax.annotation.Resource;
 /**
  * Created by 浩 on 2015-11-25 0025.
  */
-@AccessLogger("计数器")
 @RestController
 @Authorize
+@AccessLogger("计数器")
 public class CounterController {
 
     @Resource
@@ -46,4 +46,5 @@ public class CounterController {
         long count = counter.count("login_".concat(date));
         return new ResponseMessage(true, count);
     }
+
 }

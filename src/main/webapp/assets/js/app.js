@@ -58,8 +58,8 @@ var Grid = function (api, e_id, tmpId) {
     this.pageIndex = 0;
     this.pageSize = 10;
     this.maxShowPage = 3;
-    this.sortField = "";
-    this.sortOrder = "";
+    this.sortField;
+    this.sortOrder ;
     this.tmpParam = {};
     this.eId = e_id;
     this.$template = null, this.$request = null;

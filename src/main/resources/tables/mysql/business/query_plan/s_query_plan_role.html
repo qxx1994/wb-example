@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head lang="cn">
+    <meta charset="UTF-8">
+    <title>方案角色关联表</title>
+</head>
+<body>
+<correlation target="s_query_plan" alias="plan">
+    <condition filed="plan_id" value="plan.u_id" sql="true"></condition>
+</correlation>
+<correlation target="s_role" alias="role">
+    <condition filed="role_id" value="role.u_id" sql="true"></condition>
+</correlation>
+<input field-meta name="u_id" primary_key="true" remark="主键" java-type="string" data-type="varchar(64)"/>
+<input field-meta name="plan_id" not-null="true" remark="方案主键" java-type="string" data-type="varchar(64)"/>
+<input field-meta name="role_id" not-null="true" remark="角色主键" java-type="string" data-type="varchar(64)"/>
+<input field-meta name="is_default" not-null="true" remark="是否为默认方案" java-type="int" data-type="int"/>
+</body>
+</html>
