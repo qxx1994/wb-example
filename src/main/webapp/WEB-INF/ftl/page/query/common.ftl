@@ -24,7 +24,16 @@
         </div>
     </div>
 </div>
+<div class="info_frame" style="display: none">
+    <div  id="__info_${param.module}"></div>
+    <p align="center">
+        <button class="am-btn am-btn-secondary" type="button" onclick="showGrid();">返回</button>
+    </p>
+</div>
 <script type="text/html" id="common_list_template_${param.module}">
+
+</script>
+<script type="text/html" id="common_info_template_${param.module}">
 
 </script>
 <script type="text/html" id="pagerTemplate">
@@ -33,22 +42,23 @@
         <li class="am-disabled"><a href="javascript:void('0')">&laquo;</a></li>
         {{/if}}
         {{if pageIndex!=0}}
-        <li><a href="javascript:page.doPage(0)">&laquo;</a></li>
+        <li><a href="javascript:grid.doPage(0)">&laquo;</a></li>
         {{/if}}
         {{buildPage totalPage}}
         {{if pageIndex==totalPage-1}}
         <li class="am-disabled"><a href="javascript:void('0')">&raquo;</a></li>
         {{/if}}
         {{if pageIndex!=totalPage-1}}
-        <li><a href="javascript:page.doPage({{totalPage-1}})">&raquo;</a></li>
+        <li><a href="javascript:grid.doPage({{totalPage-1}})">&raquo;</a></li>
         {{/if}}
     </ul>
 </script>
+<script type="text/javascript"src="${basePath}/plugins/ueditor/ueditor.parse.js"></script>
 <script type="text/javascript">
     var module = "${param.module}";
     var plan_list_api = "queryPlan/list/" + module + "/";
     var plan_list = [];
-    var request;
+    var request,template;
     var nowPlanId = null;
     var nowPlan = {};
     initPlanList();
@@ -56,6 +66,9 @@
     var grid = null;
     function initPlanHTML() {
         var html = "<select class='am-input-sm' style='width: 200px' onchange='nowPlanId=this.value();initPlan()'>";
+        if(plan_list.length==1){
+            nowPlanId = plan_list[0].plan.u_id;
+        }
         $(plan_list).each(function (i, data) {
             if (data.is_default == 1) {
                 nowPlanId = data.plan.u_id;
@@ -66,10 +79,46 @@
         return html;
     }
 
+    function initInfoTemplate(){
+        request.info("/cf/s_template/", nowPlan.info_template_id, function (data) {
+            if (data.success) {
+                $("#common_info_template_"+module).html(data.data.content);
+            }
+        });
+    }
+
     function initGridData(){
         var api =nowPlan.data_api;
         grid = new Grid(api,"data_list","common_list_template_"+module);
         grid.load({});
+    }
+
+    function info(id){
+        var api =nowPlan.data_api;
+        request.info(api,id, function (data) {
+            template.helper("html",function(data){
+                var arrEntities={'lt':'<','gt':'>','nbsp':' ','amp':'&','quot':'"'};
+                return data.replace(/&(lt|gt|nbsp|amp|quot);/ig,function(all,t){return arrEntities[t];});
+            });
+            var html =  template.compile($("#common_info_template_"+module).html())(data.data);
+            $("#__info_"+module).html(html);
+            uParse("#__info_"+module,{
+                rootPath : '',
+                chartContainerHeight:500
+            });
+            showForm();
+        });
+    }
+
+    function showGrid() {
+        $(".info_frame").fadeOut(100, function () {
+            $(".main_frame").fadeIn(200);
+        });
+    }
+   function showForm() {
+        $(".main_frame").fadeOut(100, function () {
+            $(".info_frame").fadeIn(200);
+        });
     }
 
     //初始化选择的plan
@@ -80,6 +129,7 @@
                 $("#searchConditionList").html(initQueryConditionHTML());
                 $("#common_list_template_"+module).html(initDataGridTemplate()+$("#pagerTemplate").html());
                 initGridData();
+                initInfoTemplate();
             }
         });
     }
@@ -105,7 +155,7 @@
             $(datas).each(function (i, data) {
                 html += " <td>{{val."+data.field+"}}</td>";
             });
-            html += "<td><button onclick=\"page.editModule('{{val.u_id}}')\" class=\"am-btn-primary am-btn am-btn-default\">";
+            html += "<td><button onclick=\"info('{{val.u_id}}')\" class=\"am-btn-primary am-btn am-btn-default\">";
             html += " <i class=\"am-icon-cog\"></i>查看</button> </td></tr> " +
                     "{{/each}}";
             html += " </tbody>";
@@ -123,15 +173,20 @@
                 html += getQueryConditionTemplate(data);
                 html += "</li>";
             });
-            html += " <li><button onclick=\"page.loadGrid()\" class=\"am-btn am-btn-default\">搜索</button></li>";
+            html += " <li><button onclick=\"search()\" class=\"am-btn am-btn-default\">搜索</button></li>";
             return html;
         }
+    }
+    function search(){
+        var param = getFromData("searchForm");
+        grid.load(param);
     }
 
     //加载方案列表
     function initPlanList() {
-        seajs.use("request", function (req) {
+        seajs.use(["request","template"], function (req,t) {
             request = req;
+            template = t;
             request.get(plan_list_api, {}, function (data) {
                 if (data.success) {
                     plan_list = data.data;
