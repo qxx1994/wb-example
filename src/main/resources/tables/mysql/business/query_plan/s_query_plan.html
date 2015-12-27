@@ -18,13 +18,9 @@
 <input field-meta name="creator_id" can-update="false" remark="创建人" java-type="string" data-type="varchar(256)"/>
 <input field-meta name="create_time" can-update="false" remark="创建时间" java-type="date" data-type="datetime"/>
 <input field-meta name="update_time" remark="修改时间" java-type="date" data-type="datetime"/>
-<input field-meta name="status" remark="状态" java-type="date" data-type="datetime"/>
+<input field-meta name="status" remark="状态" java-type="date" data-type="int"/>
 </body>
 </html>
 <script trigger="insert.before" src="trigger/PlanInsertBefore.groovy" language="groovy" />
 
-<script trigger="update.before" type="text/java" language="groovy">
-    import java.sql.Timestamp;
-    param.set("update_date",new Timestamp(System.currentTimeMillis()));
-            return true;
-</script>
+<script trigger="update.before" src="trigger/PlanUpdateBefore.groovy" language="groovy"/>

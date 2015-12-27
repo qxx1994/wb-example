@@ -20,6 +20,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * 查询方案控制器，用于获取当前用户指定模块的查询方案以及方案详情
  * Created by 浩 on 2015-12-01 0001.
  */
 @RestController
@@ -30,9 +31,6 @@ public class QueryPlanController {
 
     @Resource
     private DataBase dataBase;
-
-    //方案表
-    private String plan_table = "s_query_plan";
 
     //方案角色关联表
     private String plan_role_table = "s_query_plan_role";

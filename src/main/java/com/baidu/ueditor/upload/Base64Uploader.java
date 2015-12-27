@@ -5,7 +5,7 @@ import com.baidu.ueditor.define.BaseState;
 import com.baidu.ueditor.define.FileType;
 import com.baidu.ueditor.define.State;
 import org.apache.commons.codec.binary.Base64;
-import org.webbuilder.utils.base.MD5;
+import org.webbuilder.utils.common.MD5;
 import org.webbuilder.web.core.utils.SpringMvcContextUtil;
 import org.webbuilder.web.po.resource.Resources;
 import org.webbuilder.web.service.resource.FileService;

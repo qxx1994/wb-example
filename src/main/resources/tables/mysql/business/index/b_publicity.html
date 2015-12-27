@@ -39,6 +39,8 @@
     //将阅读数量填充到数据中
     def readerSize=  dataBase.getTable("b_publicity_reader").createQuery().total(param_new);
     instance.put("readerSize",readerSize);
+
+    instance.put("name","中文名称");
     return true;
 </script>
 

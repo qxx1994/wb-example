@@ -140,9 +140,7 @@ var Grid = function (api, e_id, tmpId) {
                 }
                 progress.set(0.8);
                 var totalPage = Math.ceil(datas.total / proto.pageSize);
-                if (!proto.render) {
-                    proto.render = template.renderFile(tmpId);
-                }
+                    proto.render = template.compile($("#"+tmpId).html());
                 var html = proto.render({
                     data: datas.data,
                     pageIndex: proto.pageIndex,

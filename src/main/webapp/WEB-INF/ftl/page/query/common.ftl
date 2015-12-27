@@ -65,16 +65,20 @@
 
     var grid = null;
     function initPlanHTML() {
-        var html = "<select class='am-input-sm' style='width: 200px' onchange='nowPlanId=this.value();initPlan()'>";
+        var html = "<select class='am-input-sm' style='width: 200px' onchange='nowPlanId=this.value;initPlan()'>";
         if(plan_list.length==1){
             nowPlanId = plan_list[0].plan.u_id;
         }
         $(plan_list).each(function (i, data) {
+            logger.info(data);
             if (data.is_default == 1) {
                 nowPlanId = data.plan.u_id;
             }
             html += "<option " + (data.is_default == 1 ? "selected" : "") + " value=\"" + data.plan.u_id + "\">" + (data.plan.name) + "(" + (data.plan.type) + ")</option>";
         });
+        if(plan_list.length>0&&nowPlanId==null){
+            nowPlanId = plan_list[0].plan.u_id;
+        }
         html += "</select>";
         return html;
     }

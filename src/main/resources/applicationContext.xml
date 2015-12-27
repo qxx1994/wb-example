@@ -15,7 +15,7 @@
     <import resource="classpath:config/spring/applicationContext-*.xml"></import>
     <!--导入redis缓存配置
     <import resource="classpath:config/cache/redis/redisCacheContext.xml"></import>
--->
+    -->
     <!--导入本地缓存配置-->
     <import resource="classpath:config/cache/local/localCacheContext.xml"></import>
 

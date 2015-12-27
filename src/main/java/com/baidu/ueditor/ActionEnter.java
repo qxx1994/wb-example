@@ -23,7 +23,6 @@ public class ActionEnter {
 	private ConfigManager configManager = null;
 
 	public ActionEnter ( HttpServletRequest request, String rootPath ) {
-		
 		this.request = request;
 		this.rootPath = rootPath;
 		this.actionType = request.getParameter( "action" );

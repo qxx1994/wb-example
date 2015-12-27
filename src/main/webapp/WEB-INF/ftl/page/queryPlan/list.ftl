@@ -14,6 +14,9 @@
         <input name="name$LIKE" class="am-form-field" placeholder="方案名称">
     </div>
     <button onclick="page.loadGrid()" class="am-btn am-btn-default">搜索</button>
+<#if user.hasAccessModuleLevel("s_query_plan","C")>
+    <button onclick="page.newModule({data:{}})" class="am-btn am-btn-primary">新建模板</button>
+</#if>
 </form>
 <div class="am-panel am-panel-primary main_frame" style="margin-left: 20px;margin-right: 10px;margin-top: 5px;">
     <div class="am-panel-hd">方案列表</div>
@@ -245,13 +248,16 @@
     function initBindList(data){
         seajs.use(["request","template"],function(request,template){
 
-            if (data.data.show_fields) {
-                var html = template("show_fields_list_template", {data: JSON.parse(data.data.show_fields)});
-                $("#show_fields_list").html(html);
-            } if (data.data.query_condition) {
-                var html = template("query_condition_list_template", {data: JSON.parse(data.data.query_condition)});
-                $("#query_condition_list").html(html);
+            if (!data.data.show_fields) {
+                data.data.show_fields = "[]";
+            } if (!data.data.query_condition) {
+                data.data.query_condition = "[]";
+
             }
+            var html = template("show_fields_list_template", {data: JSON.parse(data.data.show_fields)});
+            $("#show_fields_list").html(html);
+            var html = template("query_condition_list_template", {data: JSON.parse(data.data.query_condition)});
+            $("#query_condition_list").html(html);
 
             request.list("role/", {}, function (datas) {
                 if (datas.total) {

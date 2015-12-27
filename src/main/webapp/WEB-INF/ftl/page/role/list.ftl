@@ -148,7 +148,6 @@
     </table>
 </script>
 <script type="text/javascript" src="${basePath}/resources/js/module/list.js">
-
 </script>
 <script type="text/javascript">
     var api = "/role/", sortField = "u_id";

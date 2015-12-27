@@ -42,7 +42,7 @@ var Page = function (conf) {
         proto.showForm();
         var html = proto.$template(proto.config['form.template'], {data: data});
         $("#" + proto.config['form.div']).html(html);
-        proto.onAdd();
+        proto.onAdd(data);
         proto.nowFunc = function (data) {
             var $btn = $("#submitBtn")
             $btn.button('loading');
@@ -75,7 +75,7 @@ var Page = function (conf) {
 
     proto.onEdit = function (data) {
     }
-    proto.onAdd = function () {
+    proto.onAdd = function (data) {
     }
     proto.editModule = function (id) {
         proto.showForm();

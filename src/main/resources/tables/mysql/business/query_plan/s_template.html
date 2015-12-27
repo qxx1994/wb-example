@@ -5,6 +5,7 @@
     <title>模板</title>
 </head>
 <body>
+<table-meta name="s_template" remark="模板管理" />
 <input field-meta name="u_id" primary_key="true" remark="主键" java-type="string" data-type="varchar(64)"/>
 <input field-meta name="type" not-null="true" remark="模板类型" java-type="string" data-type="varchar(64)"/>
 <input field-meta name="name" not-null="true" remark="模板名称" java-type="string" data-type="varchar(128)"/>
@@ -14,3 +15,12 @@
 <input field-meta name="update_time" remark="修改时间" java-type="date" data-type="datetime"/>
 </body>
 </html>
+<script trigger="insert.before" src="trigger/TemplateInsertBefore.groovy" language="groovy" />
+<script trigger="update.before" type="text/java" language="groovy">
+import java.sql.Timestamp;
+import org.webbuilder.web.core.utils.RandomUtil;
+import org.webbuilder.sql.param.insert.InsertParam;
+import org.webbuilder.sql.param.delete.DeleteParam;
+param.set("update_time",new Timestamp(System.currentTimeMillis()));
+return true;
+</script>

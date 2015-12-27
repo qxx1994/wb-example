@@ -127,7 +127,6 @@
         </div>
         <div class="am-form-group">
             <label for="level_list" style="color: red">可选权限：</label>
-
             <div id="level_list" style="max-width: 600px;" class="am-scrollable-horizontal am-text-nowrap">
                 {{option=toObj(data.m_option)}}
                 <table id="level_table"

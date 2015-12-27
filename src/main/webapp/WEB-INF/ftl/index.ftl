@@ -49,26 +49,27 @@
 
 <div class="am-cf admin-main">
     <!-- sidebar start -->
-    <div class="admin-sidebar am-offcanvas " id="admin-offcanvas" style="overflow: auto">
+    <div class="admin-sidebar am-offcanvas " id="admin-offcanvas" style="">
         <div class="am-offcanvas-bar admin-offcanvas-bar">
             <ul class="am-list admin-sidebar-list">
                 <li><a onclick="goPage('page/index_page.html');" href="javascript:void(0)"><span
                         class="am-icon-home"></span> 首页</a></li>
-
+            <#assign first=true/>
             <#list user.getModulesByPid("-1") as module>
                 <#assign module_c_list=user.getModulesByPid(module.u_id,"M")/>
                 <#if (module_c_list?size> 0)>
-                <li class="admin-parent">
-                    <a class="am-cf" data-am-collapse="{target: '#collapse-nav_${module.u_id}'}"><span class="${module.icon}"></span>
-                     ${module.name}<span class="am-icon-angle-right am-fr am-margin-right"></span></a>
-                    <ul class="am-list am-collapse admin-sidebar-sub <#if module_index==0>am-in</#if>" id="collapse-nav_${module.u_id}">
-                     <#list module_c_list as module_c>
-                         <li><a  onclick="goPage('${module_c.uri}');"  href="javascript:void(0)" class="am-cf">
-                             <span class="${module_c.icon}"></span>
-                         ${module_c.name}<span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span></a></li>
-                     </#list>
-                    </ul>
-                </li>
+                    <li class="admin-parent">
+                        <a class="am-cf" data-am-collapse="{target: '#collapse-nav_${module.u_id}'}"><span class="${module.icon}"></span>
+                        ${module.name}<span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+                        <ul class="am-list am-collapse admin-sidebar-sub <#if first>am-in</#if>" id="collapse-nav_${module.u_id}">
+                            <#list module_c_list as module_c>
+                                <li><a  onclick="goPage('${module_c.uri}');"  href="javascript:void(0)" class="am-cf">
+                                    <span class="${module_c.icon}"></span>
+                                ${module_c.name}<span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span></a></li>
+                            </#list>
+                        </ul>
+                    </li>
+                    <#assign first=false/>
                 </#if>
             </#list>
                 <li><a href="#"><span class="am-icon-sign-out"></span> 注销</a></li>

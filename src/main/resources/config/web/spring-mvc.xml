@@ -98,7 +98,6 @@
     <aop:config>
         <aop:pointcut id="authorize" expression="execution(* org.webbuilder.*.controller..*(..))
                                                     or execution(* org.webbuilder.web.core.controller..*(..))
-                                                     or execution(* com.cqth.xysp.controller.api..*(..))
                                                     "/>
         <aop:aspect ref="authorizeAndLoggerAdvice">
             <aop:around method="authorize" pointcut-ref="authorize"/>
@@ -123,12 +122,12 @@
     <bean class="org.webbuilder.web.core.websocket.cmd.processor.LoggerProcessor" p:messageManager-ref="messageManager"
           init-method="init"/>
 
-    <!--webSocket 映射设置 -->
+    <!--webSocket 映射设置
     <websocket:handlers>
         <websocket:mapping path="/socket" handler="webSocket"/>
         <websocket:handshake-interceptors>
             <bean class="org.webbuilder.web.core.websocket.HandshakeInterceptor"/>
         </websocket:handshake-interceptors>
     </websocket:handlers>
-
+-->
 </beans>

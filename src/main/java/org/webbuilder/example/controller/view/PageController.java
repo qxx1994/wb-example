@@ -32,11 +32,11 @@ public class PageController {
         }
         if (path.contains("."))
             path = path.split("[.]")[0];
-        if (!path.equals("go_login")&&!path.equals("login") && WebUtil.getLoginUser(request) == null) {
+        if (!path.equals("go_login") && !path.equals("login") && WebUtil.getLoginUser(request) == null) {
             path = "go_login";
         }
         ModelAndView modelAndView = new ModelAndView(path);
-        Map<String, Object> sessionAttr = new HashMap<>();
+        Map<String, Object> sessionAttr =new HashMap<>();
         Enumeration<String> enumeration = request.getSession().getAttributeNames();
         while (enumeration.hasMoreElements()) {
             String name = enumeration.nextElement();
@@ -47,5 +47,4 @@ public class PageController {
         modelAndView.addObject("config", configService);
         return modelAndView;
     }
-
 }

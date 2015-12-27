@@ -6,9 +6,6 @@ import org.slf4j.LoggerFactory;
 import org.webbuilder.sql.DataBase;
 import org.webbuilder.sql.Table;
 import org.webbuilder.sql.param.insert.InsertParam;
-import org.webbuilder.sql.param.update.UpdateParam;
-import org.webbuilder.utils.base.Resources;
-import org.webbuilder.utils.base.file.FileUtil;
 import org.webbuilder.web.core.logger.LoggerService;
 import org.webbuilder.web.po.logger.LogInfo;
 
@@ -16,13 +13,10 @@ import javax.annotation.Resource;
 import java.beans.BeanInfo;
 import java.beans.Introspector;
 import java.beans.PropertyDescriptor;
-import java.io.File;
-import java.io.IOException;
 import java.lang.reflect.Method;
 import java.net.InetAddress;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -79,16 +73,6 @@ public class DBLoggerService implements LoggerService {
             logger.error(JSON.toJSONString(logInfo));
             logger.error("insert logger error", e);
         }
-    }
-
-    @Override
-    public List<LogInfo> search(Map<String, Object> conditions) throws Exception {
-        return null;
-    }
-
-    @Override
-    public int total(Map<String, Object> conditions) throws Exception {
-        return 0;
     }
 
     private static final Map<String, Method> cache = new ConcurrentHashMap<>();
