@@ -8,6 +8,19 @@
     <artifactId>example</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
+
+    <repositories>
+        <repository>
+            <id>nexus</id>
+            <name>hsweb</name>
+            <layout>default</layout>
+            <url>http://121.199.3.43:8889/nexus/content/groups/public/</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
     <build>
         <plugins>
             <plugin>
