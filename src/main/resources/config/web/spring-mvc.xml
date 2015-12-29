@@ -84,10 +84,10 @@
     <bean id="authorizeAndLoggerAdvice" class="org.webbuilder.web.core.aop.authorize.AuthorizeAndLoggerAdvice">
         <!--
         <property name="loggerService">
-            <bean class="com.cqth.xysp.service.DBLoggerService">
+            <bean class="org.webbuilder.example.service.DBLoggerService">
                 <property name="baseLog">
                     <map>
-                        <entry key="app_name" value="xysp"/>
+                        <entry key="app_name" value="test"/>
                     </map>
                 </property>
             </bean>
