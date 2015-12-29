@@ -11,7 +11,7 @@
     <meta http-equiv="Cache-Control" content="no-siteapp"/>
     <link rel="icon" type="image/png" href="assets/i/favicon.png">
     <link rel="apple-touch-icon-precomposed" href="assets/i/favicon.png">
-    <meta name="apple-mobile-web-app-title" content="重庆市两江新区校园食品监管平台"/>
+    <meta name="apple-mobile-web-app-title" content="test"/>
     <link rel="stylesheet" href="assets/css/amazeui.min.css"/>
     <link rel="stylesheet" href="assets/css/admin.css">
     <link rel="stylesheet" href="assets/css/font-awesome.min.css">
