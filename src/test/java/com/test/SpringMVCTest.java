@@ -28,21 +28,15 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppC
 @ContextConfiguration(locations = {"classpath:applicationContext.xml", "classpath:config/web/spring-mvc.xml"})
 @WebAppConfiguration
 public class SpringMVCTest extends AbstractJUnit4SpringContextTests {
-
     @Resource
     private WebApplicationContext wac;
-
     private MockMvc mvc;
-
     @Resource
     private UserService userService;
-
     @Resource
     private HttpSessionManager httpSessionManager;
-
     @Resource
     private MockHttpSession session = new MockHttpSession();
-
     @Before
     public void setup() throws Exception {
         this.mvc = webAppContextSetup(this.wac).build();

@@ -7,6 +7,7 @@ import org.webbuilder.utils.storage.counter.Counter;
 import org.webbuilder.web.core.aop.logger.AccessLogger;
 import org.webbuilder.web.core.authorize.annotation.Authorize;
 import org.webbuilder.web.core.bean.ResponseMessage;
+import org.webbuilder.web.core.exception.BusinessException;
 
 import javax.annotation.Resource;
 

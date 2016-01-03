@@ -34,6 +34,10 @@
         <property name="driver" ref="localDriver"/>
     </bean>
 
+    <bean class="org.webbuilder.web.core.utils.http.session.HttpSessionManagerContainer">
+        <property name="manager" ref="httpSessionManager" />
+    </bean>
+
     <!--缓存注解支持,在需要缓存的service方法中，注解 @Cacheable 或者@CacheEvict-->
     <cache:annotation-driven cache-manager="cacheManager"/>
 

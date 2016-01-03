@@ -18,6 +18,11 @@
     </listener>
     <!-- Spring -->
 
+    <!--在未使用redis httpSession共享时，需要加入此选项来进行用户自动退出-->
+    <listener>
+        <listener-class>org.webbuilder.web.core.utils.http.session.UserLoginOutListener</listener-class>
+    </listener>
+
     <!-- 配置Spring字符编码过滤器 -->
     <filter>
         <filter-name>encodingFilter</filter-name>

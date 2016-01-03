@@ -53,8 +53,8 @@
     </logger>
 
 
-    <root level="ON">
-        <appender-ref ref="Console"/>
+    <root level="ERROR">
+        <appender-ref ref="File"/>
         <!--
         <appender-ref ref="DB" />
         <appender-ref ref="File" />

@@ -24,7 +24,7 @@
 </html>
 <script trigger="init.data" type="text/java" language="groovy">
     //在数据库被创建后，自定初始化数据
-    import org.webbuilder.utils.base.MD5;
+    import org.webbuilder.utils.common.MD5;
     def data=[
         [u_id:"admin",username:"admin",password:MD5.encode("admin"),create_date:new java.util.Date()]
     ];

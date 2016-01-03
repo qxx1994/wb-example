@@ -58,6 +58,10 @@
         </constructor-arg>
     </bean>
 
+    <bean class="org.webbuilder.web.core.utils.http.session.HttpSessionManagerContainer">
+        <property name="manager" ref="httpSessionManager" />
+    </bean>
+
     <bean id="httpSessionDriver" class="org.webbuilder.utils.storage.driver.redis.RedisStorageDriver"
           init-method="init">
         <property name="name" value="redis-httpSession"/>
